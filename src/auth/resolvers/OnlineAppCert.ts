@@ -11,7 +11,7 @@ import * as consts from './../../Consts';
 import { OnlineResolver } from './base/OnlineResolver';
 import { HostingEnvironment } from '../HostingEnvironment';
 
-export class OnlineAddinOnly extends OnlineResolver {
+export class OnlineAppCert extends OnlineResolver {
 
   private static TokenCache: Cache = new Cache();
 
