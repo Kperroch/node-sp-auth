@@ -9,6 +9,10 @@ export interface IOnlineAddinCredentials extends IBasicOAuthOption {
   realm?: string;
 }
 
+export interface IOnlineAppCert extends IBasicOAuthOption {
+  token: string;
+}
+
 export interface IOnPremiseAddinCredentials extends IBasicOAuthOption {
   realm: string;
   issuerId: string;
@@ -56,7 +60,8 @@ export type IAuthOptions =
   | IUserCredentials
   | IOnpremiseUserCredentials
   | IAdfsUserCredentials
-  | IOnDemandCredentials;
+  | IOnDemandCredentials
+  | IOnlineAppCert;
 
 export function isOnPremUrl(siteUrl: string): boolean {
   let host: string = (url.parse(siteUrl)).host;
@@ -66,6 +71,10 @@ export function isOnPremUrl(siteUrl: string): boolean {
 
 export function isAddinOnlyOnline(T: IAuthOptions): T is IOnlineAddinCredentials {
   return (T as IOnlineAddinCredentials).clientSecret !== undefined;
+}
+
+export function isAppCertOnline(T: IAuthOptions): T is IOnlineAppCert {
+  return (T as IOnlineAppCert).token !== undefined;
 }
 
 export function isAddinOnlyOnpremise(T: IAuthOptions): T is IOnPremiseAddinCredentials {

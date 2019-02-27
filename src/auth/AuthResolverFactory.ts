@@ -10,6 +10,7 @@ import { AdfsCredentials } from './resolvers/AdfsCredentials';
 import { OnDemand } from './resolvers/ondemand/OnDemand';
 import * as authOptions from './IAuthOptions';
 import { FileConfig } from './resolvers/FileConfig';
+import { OnlineAppCert } from './resolvers/OnlineAppCert';
 
 export class AuthResolverFactory {
   public static resolve(siteUrl: string, options?: IAuthOptions): IAuthResolver {
@@ -36,6 +37,10 @@ export class AuthResolverFactory {
 
     if (authOptions.isAddinOnlyOnline(options)) {
       return new OnlineAddinOnly(siteUrl, options);
+    }
+
+    if (authOptions.isAppCertOnline(options)) {
+      return new OnlineAppCert(siteUrl, options);
     }
 
     if (authOptions.isAddinOnlyOnpremise(options)) {

@@ -3,7 +3,7 @@ import { request } from './../../config';
 import { IncomingMessage } from 'http';
 import * as url from 'url';
 
-import { IOnlineAddinCredentials } from './../IAuthOptions';
+import { IOnlineAppCert } from './../IAuthOptions';
 import { IAuthResponse } from './../IAuthResponse';
 import { Cache } from './../../utils/Cache';
 import { UrlHelper } from './../../utils/UrlHelper';
@@ -15,7 +15,7 @@ export class OnlineAppCert extends OnlineResolver {
 
   private static TokenCache: Cache = new Cache();
 
-  constructor(_siteUrl: string, private _authOptions: IOnlineAddinCredentials) {
+  constructor(_siteUrl: string, private _authOptions: IOnlineAppCert) {
     super(_siteUrl);
   }
 
@@ -29,5 +29,13 @@ export class OnlineAppCert extends OnlineResolver {
         }
       });
     }
+  }
+  
+  protected InitEndpointsMappings(): void {
+    this.endpointsMappings.set(HostingEnvironment.Production, 'accounts.accesscontrol.windows.net');
+    this.endpointsMappings.set(HostingEnvironment.China, 'accounts.accesscontrol.chinacloudapi.cn');
+    this.endpointsMappings.set(HostingEnvironment.German, 'login.microsoftonline.de');
+    this.endpointsMappings.set(HostingEnvironment.USDefence, 'accounts.accesscontrol.windows.net');
+    this.endpointsMappings.set(HostingEnvironment.USGovernment, 'accounts.accesscontrol.windows.net');
   }
 }
