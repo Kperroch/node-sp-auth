@@ -1,0 +1,14 @@
+import { IUserCredentials, IOnpremiseUserCredentials, IOnpremiseFbaCredentials, IOnPremiseAddinCredentials, IOnlineAddinCredentials, IAdfsUserCredentials } from './../../src/auth/IAuthOptions';
+export declare let onlineUrl: string;
+export declare let onpremAdfsEnabledUrl: string;
+export declare let onpremNtlmEnabledUrl: string;
+export declare let onpremFbaEnabledUrl: string;
+export declare let onlineCreds: IUserCredentials;
+export declare let onlineWithAdfsCreds: IUserCredentials;
+export declare let onpremCreds: IOnpremiseUserCredentials;
+export declare let onpremUpnCreds: IOnpremiseUserCredentials;
+export declare let onpremUserWithDomainCreds: IOnpremiseUserCredentials;
+export declare let onpremFbaCreds: IOnpremiseFbaCredentials;
+export declare let onpremAddinOnly: IOnPremiseAddinCredentials;
+export declare let onlineAddinOnly: IOnlineAddinCredentials;
+export declare let adfsCredentials: IAdfsUserCredentials;
